@@ -4,7 +4,6 @@ namespace Alareqi\WasenderExtend;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Alareqi\WasenderExtend\Commands\WasenderExtendCommand;
 
 class WasenderExtendServiceProvider extends PackageServiceProvider
 {

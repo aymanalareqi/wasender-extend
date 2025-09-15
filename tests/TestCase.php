@@ -2,9 +2,9 @@
 
 namespace Alareqi\WasenderExtend\Tests;
 
+use Alareqi\WasenderExtend\WasenderExtendServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Alareqi\WasenderExtend\WasenderExtendServiceProvider;
 
 class TestCase extends Orchestra
 {
@@ -13,7 +13,7 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn(string $modelName) => 'Alareqi\\WasenderExtend\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
+            fn (string $modelName) => 'Alareqi\\WasenderExtend\\Database\\Factories\\'.class_basename($modelName).'Factory'
         );
     }
 
