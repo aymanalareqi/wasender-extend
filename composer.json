@@ -1,17 +1,17 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "alareqi/wasender-extend",
+    "description": "This package add extended functionality to Wasender",
     "keywords": [
-        ":vendor_name",
+        "Ayman Alareqi",
         "laravel",
-        ":package_slug"
+        "wasender-extend"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/alareqi/wasender-extend",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Ayman Alareqi",
+            "email": "ayman.a.alareqi@gmail.com",
             "role": "Developer"
         }
     ],
@@ -35,13 +35,13 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src/",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories/"
+            "Alareqi\\WasenderExtend\\": "src/",
+            "Alareqi\\WasenderExtend\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests/",
+            "Alareqi\\WasenderExtend\\Tests\\": "tests/",
             "Workbench\\App\\": "workbench/app/"
         }
     },
@@ -63,10 +63,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "Alareqi\\WasenderExtend\\WasenderExtendServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "WasenderExtend": "Alareqi\\WasenderExtend\\Facades\\WasenderExtend"
             }
         }
     },

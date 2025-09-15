@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Alareqi\WasenderExtend\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class WasenderExtendCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'wasender-extend';
 
     public $description = 'My command';
 
