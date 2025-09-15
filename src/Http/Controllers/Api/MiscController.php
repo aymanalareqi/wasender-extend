@@ -3,22 +3,19 @@
 namespace Alareqi\WasenderExtend\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\User;
 use App\Models\App;
+use App\Models\User;
 use App\Traits\Whatsapp;
-
 use Http;
+use Illuminate\Http\Request;
 
 class MiscController extends Controller
 {
     use Whatsapp;
 
-
     /**
      * sent message
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function onWhatsapp(Request $request)
@@ -33,18 +30,19 @@ class MiscController extends Controller
 
         $inputs = $request->all();
         $validator = validator($inputs, [
-            "whatsapp_id" => "required",
+            'whatsapp_id' => 'required',
         ]);
 
         if ($validator->fails()) {
             return response()->json(
                 [
-                    "message" => __("Validation error"),
-                    'errors' => $validator->errors()
+                    'message' => __('Validation error'),
+                    'errors' => $validator->errors(),
                 ],
                 401,
             );
         }
+
         return $this->whatsappIdOnWhatsapp($app->device->id, $inputs['whatsapp_id']);
     }
 
@@ -60,19 +58,20 @@ class MiscController extends Controller
 
         $inputs = $request->all();
         $validator = validator($inputs, [
-            "whatsapp_id" => "required",
+            'whatsapp_id' => 'required',
         ]);
 
         if ($validator->fails()) {
             return response()->json(
                 [
-                    "message" => __("Validation error"),
-                    'errors' => $validator->errors()
+                    'message' => __('Validation error'),
+                    'errors' => $validator->errors(),
                 ],
                 401,
             );
         }
     }
+
     public function getQr(Request $request)
     {
         $user = User::where('status', 1)->where('will_expire', '>', now())->where('authkey', $request->authkey)->first();
@@ -85,16 +84,16 @@ class MiscController extends Controller
 
         $device = $app->device;
 
-        if (!$device) {
+        if (! $device) {
             return response()->json([
-                "message" => __('Device not found'),
+                'message' => __('Device not found'),
             ], 404);
         }
 
         $id = $device->id;
-        $response = Http::post(env('WA_SERVER_URL') . '/sessions/add', [
-            'id'       => 'device_' . $id,
-            'isLegacy' => false
+        $response = Http::post(env('WA_SERVER_URL').'/sessions/add', [
+            'id' => 'device_'.$id,
+            'isLegacy' => false,
         ]);
 
         if ($response->status() == 200) {
@@ -106,8 +105,9 @@ class MiscController extends Controller
 
             return response()->json($data);
         } elseif ($response->status() == 409) {
-            $data['qr']      = $device->qr;
+            $data['qr'] = $device->qr;
             $data['message'] = __('QR code received, please scan the QR code');
+
             return response()->json($data);
         }
     }
@@ -124,14 +124,14 @@ class MiscController extends Controller
 
         $device = $app->device;
 
-        if (!$device) {
+        if (! $device) {
             return response()->json([
-                "message" => __('Device not found'),
+                'message' => __('Device not found'),
             ], 404);
         }
 
         $id = $device->id;
-        $response = Http::get(env('WA_SERVER_URL') . '/sessions/status/device_' . $id);
+        $response = Http::get(env('WA_SERVER_URL').'/sessions/status/device_'.$id);
 
         $device->status = $response->status() == 200 ? 1 : 0;
         if ($response->status() == 200) {

@@ -18,7 +18,7 @@ class WasenderExtendServiceProvider extends PackageServiceProvider
             ->name('wasender-extend')
             ->hasConfigFile()
             ->hasViews()
-            ->hasRoute(__DIR__ . '/../routes/api.php')
+            ->hasRoute(__DIR__.'/../routes/api.php')
             ->hasMigration('create_wasender_extend_table');
     }
 }
