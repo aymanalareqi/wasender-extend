@@ -51,29 +51,28 @@ class AppsController extends Controller
 
         if (getUserPlanData('apps_limit') == false) {
             return response()->json([
-                'message'=>__('Maximum App Limit Is Exceeded')
-            ],401);  
+                'message' => __('Maximum App Limit Is Exceeded'),
+            ], 401);
         }
 
         $validated = $request->validate([
             'name' => 'required|max:50',
-            'device'=>'required',
+            'device' => 'required',
             'website' => 'required|max:80|url',
         ]);
 
-        $device=Device::where('user_id',Auth::id())->findorFail($request->device);
+        $device = Device::where('user_id', Auth::id())->findorFail($request->device);
 
-        $app=new App;
-        $app->user_id=Auth::id();
-        $app->title=$request->name;
-        $app->website=$request->website;
-        $app->device_id=$request->device;
+        $app = new App;
+        $app->user_id = Auth::id();
+        $app->title = $request->name;
+        $app->website = $request->website;
+        $app->device_id = $request->device;
         $app->save();
 
         return response()->json([
-            'redirect' => route('user.app.integration',$app->uuid),
-            'message' => __('App created successfully.')
+            'redirect' => route('user.app.integration', $app->uuid),
+            'message' => __('App created successfully.'),
         ]);
     }
-
 }
