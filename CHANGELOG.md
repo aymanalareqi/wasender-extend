@@ -2,6 +2,10 @@
 
 All notable changes to `wasender-extend` will be documented in this file.
 
+## 1.0.0 - 2025-09-16
+
+**Full Changelog**: https://github.com/aymanalareqi/wasender-extend/commits/v1.0.0
+
 ## [1.0.0] - 2024-12-16
 
 ### Added
@@ -15,6 +19,7 @@ All notable changes to `wasender-extend` will be documented in this file.
   - Service Provider (`WasenderExtendServiceProvider`) for automatic package registration
   - Facade (`WasenderExtend`) for easy access to package functionality
   - Artisan Command (`wasender-extend`) for package operations
+  
 - **API Rate Limiting**: Integrated Laravel's throttle middleware for API protection
 - **Error Handling**: Comprehensive error responses for authentication, validation, and device-related errors
 - **HTTP Client Integration**: Built-in HTTP client for communicating with WhatsApp server instances
