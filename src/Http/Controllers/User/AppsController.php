@@ -7,6 +7,7 @@ use App\Models\App;
 use App\Models\Device;
 use App\Models\Smstransaction;
 use Auth;
+use Illuminate\Http\Request;
 
 class AppsController extends Controller
 {
