@@ -2,6 +2,10 @@
 
 All notable changes to `wasender-extend` will be documented in this file.
 
+## 1.0.1 - 2025-09-16
+
+**Full Changelog**: https://github.com/aymanalareqi/wasender-extend/compare/v1.0.0...v1.0.1
+
 ## 1.0.0 - 2025-09-16
 
 **Full Changelog**: https://github.com/aymanalareqi/wasender-extend/commits/v1.0.0
@@ -11,19 +15,29 @@ All notable changes to `wasender-extend` will be documented in this file.
 ### Added
 
 - **WhatsApp Contact Verification API**: Added `/api/misc/on-whatsapp` endpoint to check if a phone number is registered on WhatsApp
+  
 - **QR Code Generation API**: Added `/api/qr` endpoint to generate QR codes for WhatsApp Web authentication
+  
 - **Session Management API**: Added `/api/check-session` endpoint to check and manage WhatsApp session status
+  
 - **Authentication System**: Implemented secure API authentication using `authkey` and `appkey` parameters
+  
 - **Device Management**: Added functionality to handle WhatsApp device connections and status updates
+  
 - **Laravel Integration**:
+  
   - Service Provider (`WasenderExtendServiceProvider`) for automatic package registration
   - Facade (`WasenderExtend`) for easy access to package functionality
   - Artisan Command (`wasender-extend`) for package operations
   
 - **API Rate Limiting**: Integrated Laravel's throttle middleware for API protection
+  
 - **Error Handling**: Comprehensive error responses for authentication, validation, and device-related errors
+  
 - **HTTP Client Integration**: Built-in HTTP client for communicating with WhatsApp server instances
+  
 - **Database Integration**: Support for User, App, and Device models with proper relationships
+  
 
 ### Features
 
