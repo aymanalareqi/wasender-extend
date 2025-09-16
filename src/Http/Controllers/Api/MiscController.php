@@ -4,6 +4,7 @@ namespace Alareqi\WasenderExtend\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\App;
+use App\Models\Device;
 use App\Models\User;
 use App\Traits\Whatsapp;
 use Exception;
