@@ -92,8 +92,8 @@ class MiscController extends Controller
         }
 
         $id = $device->id;
-        $response = Http::post(env('WA_SERVER_URL') . '/sessions/add', [
-            'id' => 'device_' . $id,
+        $response = Http::post(env('WA_SERVER_URL').'/sessions/add', [
+            'id' => 'device_'.$id,
             'isLegacy' => false,
         ]);
 
@@ -132,7 +132,7 @@ class MiscController extends Controller
         }
 
         $id = $device->id;
-        $response = Http::get(env('WA_SERVER_URL') . '/sessions/status/device_' . $id);
+        $response = Http::get(env('WA_SERVER_URL').'/sessions/status/device_'.$id);
 
         $device->status = $response->status() == 200 ? 1 : 0;
         if ($response->status() == 200) {
@@ -166,38 +166,40 @@ class MiscController extends Controller
             return false;
         }
 
-        //creating session id
-        $session_id = 'device_' . $from;
+        // creating session id
+        $session_id = 'device_'.$from;
 
-        //formating message
+        // formating message
 
-        //formating array context
+        // formating array context
 
-        //get server url
+        // get server url
         $whatsServer = env('WA_SERVER_URL');
 
-        //formating array before sending data to server
+        // formating array before sending data to server
         $body['whatsapp_id'] = $whatsappId;
 
-        //sending data to whatsapp server
+        // sending data to whatsapp server
         try {
-            $response = Http::post($whatsServer . '/misc/on-whatsapp?id=' . $session_id, $body);
+            $response = Http::post($whatsServer.'/misc/on-whatsapp?id='.$session_id, $body);
             $status = $response->status();
 
             if ($status == 500) {
-                $responseData['message'] = "Internal Server Error in whatsapp server";
+                $responseData['message'] = 'Internal Server Error in whatsapp server';
                 $responseData['status'] = $status;
             } else {
                 $responseBody = json_decode($response->body());
                 $responseData['message'] = $responseBody->message;
                 $responseData['exist'] = $status == 200 ? true : false;
             }
+
             return $responseData;
         } catch (Exception $e) {
             restart_node();
             $responseData['status'] = 403;
             $responseData['message'] = $e->getMessage();
             $responseData['error'] = $e;
+
             return $responseData;
         }
     }
