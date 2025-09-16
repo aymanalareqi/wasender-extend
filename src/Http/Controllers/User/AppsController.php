@@ -39,4 +39,41 @@ class AppsController extends Controller
 
         return view('wacore::user.apps.index', compact('apps', 'devices', 'total', 'last30_messages', 'total_app', 'limit'));
     }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+
+        if (getUserPlanData('apps_limit') == false) {
+            return response()->json([
+                'message'=>__('Maximum App Limit Is Exceeded')
+            ],401);  
+        }
+
+        $validated = $request->validate([
+            'name' => 'required|max:50',
+            'device'=>'required',
+            'website' => 'required|max:80|url',
+        ]);
+
+        $device=Device::where('user_id',Auth::id())->findorFail($request->device);
+
+        $app=new App;
+        $app->user_id=Auth::id();
+        $app->title=$request->name;
+        $app->website=$request->website;
+        $app->device_id=$request->device;
+        $app->save();
+
+        return response()->json([
+            'redirect' => route('user.app.integration',$app->uuid),
+            'message' => __('App created successfully.')
+        ]);
+    }
+
 }
