@@ -13,6 +13,7 @@ Route::group(
                     Route::post('/misc/on-whatsapp', [MiscController::class, 'onWhatsapp']);
                     Route::post('/qr', [MiscController::class, 'getQr']);
                     Route::post('/check-session', [MiscController::class, 'checkSession']);
+                    Route::post('/logout', [MiscController::class, 'logout']);
                 }
             );
     }
