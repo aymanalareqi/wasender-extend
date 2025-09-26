@@ -93,8 +93,8 @@ class MiscController extends Controller
         }
 
         $id = $device->id;
-        $response = Http::post(env('WA_SERVER_URL') . '/sessions/add', [
-            'id' => 'device_' . $id,
+        $response = Http::post(env('WA_SERVER_URL').'/sessions/add', [
+            'id' => 'device_'.$id,
             'isLegacy' => false,
         ]);
 
@@ -133,7 +133,7 @@ class MiscController extends Controller
         }
 
         $id = $device->id;
-        $response = Http::get(env('WA_SERVER_URL') . '/sessions/status/device_' . $id);
+        $response = Http::get(env('WA_SERVER_URL').'/sessions/status/device_'.$id);
 
         $device->status = $response->status() == 200 ? 1 : 0;
         if ($response->status() == 200) {
@@ -168,7 +168,7 @@ class MiscController extends Controller
         }
 
         // creating session id
-        $session_id = 'device_' . $from;
+        $session_id = 'device_'.$from;
 
         // formating message
 
@@ -182,7 +182,7 @@ class MiscController extends Controller
 
         // sending data to whatsapp server
         try {
-            $response = Http::post($whatsServer . '/misc/on-whatsapp?id=' . $session_id, $body);
+            $response = Http::post($whatsServer.'/misc/on-whatsapp?id='.$session_id, $body);
             $status = $response->status();
 
             if ($status == 500) {
@@ -228,7 +228,7 @@ class MiscController extends Controller
         $device->save();
 
         $id = $device->id;
-        $response = Http::delete(env('WA_SERVER_URL') . '/sessions/delete/device_' . $id);
+        $response = Http::delete(env('WA_SERVER_URL').'/sessions/delete/device_'.$id);
         $message = $response->status() == 200 ? __('Device Logged Out Successfully') : null;
 
         return response()->json([
