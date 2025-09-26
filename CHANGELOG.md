@@ -2,6 +2,10 @@
 
 All notable changes to `wasender-extend` will be documented in this file.
 
+## 1.0.8 - 2025-09-26
+
+**Full Changelog**: https://github.com/aymanalareqi/wasender-extend/compare/v1.0.7...v1.0.8
+
 ## 1.0.7 - 2025-09-16
 
 **Full Changelog**: https://github.com/aymanalareqi/wasender-extend/compare/v1.0.6...v1.0.7
